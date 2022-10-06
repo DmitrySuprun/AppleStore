@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BagViewController.swift
 //  AppleStore
 //
 //  Created by Дмитрий Супрун on 6.10.22.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-/// UIViewController
-class ViewController: UIViewController {
-
+/// Bag items. Make an order.
+class BagViewController: UIViewController {
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

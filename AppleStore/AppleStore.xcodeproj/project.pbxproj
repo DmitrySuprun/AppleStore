@@ -9,19 +9,29 @@
 /* Begin PBXBuildFile section */
 		D552D58128EEEA3F0086F205 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D58028EEEA3F0086F205 /* AppDelegate.swift */; };
 		D552D58328EEEA3F0086F205 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D58228EEEA3F0086F205 /* SceneDelegate.swift */; };
-		D552D58528EEEA3F0086F205 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D58428EEEA3F0086F205 /* ViewController.swift */; };
+		D552D58528EEEA3F0086F205 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D58428EEEA3F0086F205 /* ShopViewController.swift */; };
 		D552D58A28EEEA410086F205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D552D58928EEEA410086F205 /* Assets.xcassets */; };
 		D552D58D28EEEA410086F205 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D552D58B28EEEA410086F205 /* LaunchScreen.storyboard */; };
+		D552D59728EF16910086F205 /* StoreTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D59628EF16910086F205 /* StoreTabBarViewController.swift */; };
+		D552D59928EF18FE0086F205 /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D59828EF18FE0086F205 /* SessionsViewController.swift */; };
+		D552D59B28EF19740086F205 /* ForYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D59A28EF19740086F205 /* ForYouViewController.swift */; };
+		D552D59D28EF19D00086F205 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D59C28EF19D00086F205 /* SearchViewController.swift */; };
+		D552D59F28EF19DB0086F205 /* BagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D59E28EF19DB0086F205 /* BagViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D552D57D28EEEA3F0086F205 /* AppleStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D552D58028EEEA3F0086F205 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D552D58228EEEA3F0086F205 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D552D58428EEEA3F0086F205 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D552D58428EEEA3F0086F205 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		D552D58928EEEA410086F205 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D552D58C28EEEA410086F205 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D552D58E28EEEA410086F205 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D552D59628EF16910086F205 /* StoreTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTabBarViewController.swift; sourceTree = "<group>"; };
+		D552D59828EF18FE0086F205 /* SessionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsViewController.swift; sourceTree = "<group>"; };
+		D552D59A28EF19740086F205 /* ForYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouViewController.swift; sourceTree = "<group>"; };
+		D552D59C28EF19D00086F205 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		D552D59E28EF19DB0086F205 /* BagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +66,12 @@
 			children = (
 				D552D58028EEEA3F0086F205 /* AppDelegate.swift */,
 				D552D58228EEEA3F0086F205 /* SceneDelegate.swift */,
-				D552D58428EEEA3F0086F205 /* ViewController.swift */,
+				D552D59628EF16910086F205 /* StoreTabBarViewController.swift */,
+				D552D58428EEEA3F0086F205 /* ShopViewController.swift */,
+				D552D59828EF18FE0086F205 /* SessionsViewController.swift */,
+				D552D59A28EF19740086F205 /* ForYouViewController.swift */,
+				D552D59C28EF19D00086F205 /* SearchViewController.swift */,
+				D552D59E28EF19DB0086F205 /* BagViewController.swift */,
 				D552D58928EEEA410086F205 /* Assets.xcassets */,
 				D552D58B28EEEA410086F205 /* LaunchScreen.storyboard */,
 				D552D58E28EEEA410086F205 /* Info.plist */,
@@ -157,8 +172,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D552D58528EEEA3F0086F205 /* ViewController.swift in Sources */,
+				D552D59928EF18FE0086F205 /* SessionsViewController.swift in Sources */,
+				D552D59D28EF19D00086F205 /* SearchViewController.swift in Sources */,
+				D552D58528EEEA3F0086F205 /* ShopViewController.swift in Sources */,
+				D552D59F28EF19DB0086F205 /* BagViewController.swift in Sources */,
+				D552D59B28EF19740086F205 /* ForYouViewController.swift in Sources */,
 				D552D58128EEEA3F0086F205 /* AppDelegate.swift in Sources */,
+				D552D59728EF16910086F205 /* StoreTabBarViewController.swift in Sources */,
 				D552D58328EEEA3F0086F205 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
