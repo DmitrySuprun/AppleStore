@@ -8,7 +8,7 @@
 import UIKit
 
 /// Personal recommendation.
-class ForYouViewController: UIViewController {
+final class ForYouViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()

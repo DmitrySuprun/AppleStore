@@ -10,7 +10,7 @@ import UIKit
 /// MainTabBarController. Tabs: Shop. For you. Search. Bag.
 final class StoreTabBarViewController: UITabBarController {
     // MARK: - Constant
-    enum Constant {
+    private enum Constant {
         static let shopItemTitle = "Shop"
         static let sessionItemTitle = "Session"
         static let forYouItemTitle = "For You"
@@ -30,6 +30,7 @@ final class StoreTabBarViewController: UITabBarController {
         let secondViewController = SessionsViewController()
         let thirdViewController = ForYouViewController()
         let forthViewController = SearchViewController()
+        let navigationController = UINavigationController(rootViewController: forthViewController)
         let fifthViewController = BagViewController()
         firstViewController.tabBarItem = UITabBarItem(title: Constant.shopItemTitle,
                                                       image: UIImage(systemName: "laptopcomputer.and.iphone"),
@@ -50,7 +51,7 @@ final class StoreTabBarViewController: UITabBarController {
             firstViewController,
             secondViewController,
             thirdViewController,
-            forthViewController,
+            navigationController,
             fifthViewController
         ]
     }

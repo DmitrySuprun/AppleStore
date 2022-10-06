@@ -8,7 +8,7 @@
 import UIKit
 
 /// Shopping by products.
-class ShopViewController: UIViewController {
+final class ShopViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()

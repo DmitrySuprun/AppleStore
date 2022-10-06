@@ -8,7 +8,7 @@
 import UIKit
 
 /// Sessions. Today at Apple.
-class SessionsViewController: UIViewController {
+final class SessionsViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
