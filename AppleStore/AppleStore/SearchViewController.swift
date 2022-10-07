@@ -92,7 +92,7 @@ final class SearchViewController: UIViewController {
         setupUI()
     }
     
-    // MARK: - Objc Methods
+    // MARK: - Private Objc Methods
     @objc private func pushProductInfoAction(_ sender: UITapGestureRecognizer) {
         var image = ""
         var name = ""
