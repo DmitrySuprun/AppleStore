@@ -12,6 +12,10 @@ final class SessionsViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    // MARK: - Private Methods
+    private func setupUI() {
         view.backgroundColor = .systemBackground
     }
 }

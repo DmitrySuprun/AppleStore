@@ -15,7 +15,7 @@ final class ShopViewController: UIViewController {
     }
     
     // MARK: - Private Methods
-    private func setupUI(){
+    private func setupUI() {
         view.backgroundColor = .systemBackground
     }
 }

@@ -16,6 +16,11 @@ final class StoreTabBarViewController: UITabBarController {
         static let forYouItemTitle = "For You"
         static let searchItemTitle = "Search"
         static let bagItemTitle = "Bag"
+        static let systemImageLaptopiPhone = "laptopcomputer.and.iphone"
+        static let systemImageCalendar = "calendar"
+        static let systemImagePerson = "person.circle"
+        static let systemImageGlass = "magnifyingglass"
+        static let systemImageBag = "bag"
     }
     
     // MARK: - LifeCycle
@@ -34,19 +39,19 @@ final class StoreTabBarViewController: UITabBarController {
         let navigationController = UINavigationController(rootViewController: forthViewController)
         let fifthViewController = BagViewController()
         firstViewController.tabBarItem = UITabBarItem(title: Constant.shopItemTitle,
-                                                      image: UIImage(systemName: "laptopcomputer.and.iphone"),
+                                                      image: UIImage(systemName: Constant.systemImageLaptopiPhone),
                                                       tag: 0)
         secondViewController.tabBarItem = UITabBarItem(title: Constant.sessionItemTitle,
-                                                       image: UIImage(systemName: "calendar"),
+                                                       image: UIImage(systemName: Constant.systemImageCalendar),
                                                        tag: 1)
         thirdViewController.tabBarItem = UITabBarItem(title: Constant.forYouItemTitle,
-                                                      image: UIImage(systemName: "person.circle"),
+                                                      image: UIImage(systemName: Constant.systemImagePerson),
                                                       tag: 2)
         forthViewController.tabBarItem = UITabBarItem(title: Constant.searchItemTitle,
-                                                      image: UIImage(systemName: "magnifyingglass"),
+                                                      image: UIImage(systemName: Constant.systemImageGlass),
                                                       tag: 3)
         fifthViewController.tabBarItem = UITabBarItem(title: Constant.bagItemTitle,
-                                                      image: UIImage(systemName: "bag"),
+                                                      image: UIImage(systemName: Constant.systemImageGlass),
                                                       tag: 4)
         viewControllers = [
             firstViewController,

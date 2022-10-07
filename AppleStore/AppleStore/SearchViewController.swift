@@ -19,6 +19,14 @@ final class SearchViewController: UIViewController {
         static let myOrderLabel = "My order status"
         static let shopByLabel = "Shop by appointment"
         static let findAStoreLabel = "Find a store"
+        static let iPhoneImageName = "Iphone14pro"
+        static let airpodsImageName = "Airpods3gen"
+        static let watchImageName = "WatchUltra"
+        static let iPhoneLabelText = "Iphone 14pro"
+        static let airpodsLabelText = "Airpods"
+        static let watchLabelText = "Watch Ultra"
+        static let systemImageGlass = "magnifyingglass"
+
     }
     
     // MARK: - Private Properties
@@ -41,20 +49,20 @@ final class SearchViewController: UIViewController {
     private lazy var firstView = makeView(xCoordinate: 20, yCoordinate: 260, tag: 0)
     private lazy var secondView = makeView(xCoordinate: 180, yCoordinate: 260, tag: 1)
     private lazy var thirdView = makeView(xCoordinate: 340, yCoordinate: 260, tag: 2)
-    private lazy var firstImageView = makeImageView(name: "Iphone14pro")
-    private lazy var secondImageView = makeImageView(name: "WatchUltra")
-    private lazy var thirdImageView = makeImageView(name: "Airpods3gen")
-    private lazy var firstLabel = makeLabel(text: "Iphone 14pro",
+    private lazy var firstImageView = makeImageView(name: Constants.iPhoneImageName)
+    private lazy var secondImageView = makeImageView(name: Constants.watchImageName)
+    private lazy var thirdImageView = makeImageView(name: Constants.airpodsImageName)
+    private lazy var firstLabel = makeLabel(text: Constants.iPhoneLabelText,
                                             size: 15,
                                             weight: .light,
                                             xCoordinate: 10,
                                             yCoordinate: 135)
-    private lazy var secondLabel = makeLabel(text: "Watch Ultra",
+    private lazy var secondLabel = makeLabel(text: Constants.watchLabelText,
                                              size: 15,
                                              weight: .light,
                                              xCoordinate: 10,
                                              yCoordinate: 135)
-    private lazy var thirdLabel = makeLabel(text: "Airpods",
+    private lazy var thirdLabel = makeLabel(text: Constants.airpodsLabelText,
                                             size: 15,
                                             weight: .light,
                                             xCoordinate: 10,
@@ -90,14 +98,14 @@ final class SearchViewController: UIViewController {
         var name = ""
         switch sender.view?.tag {
         case 0:
-            image = "Iphone14pro"
-            name = "Iphone 14pro"
+            image = Constants.iPhoneImageName
+            name = Constants.iPhoneLabelText
         case 1:
-            image = "WatchUltra"
-            name = "Watch Ultra"
+            image = Constants.watchImageName
+            name = Constants.watchLabelText
         case 2:
-            image = "Airpods3gen"
-            name = "Airpods"
+            image = Constants.airpodsImageName
+            name = Constants.airpodsImageName
         default: break
         }
         let nextViewController = ImageInfoViewController()
@@ -158,18 +166,6 @@ private extension SearchViewController {
         return searchBar
     }
     
-    func makeTextField(placeholder: String, xCoordinate: Int, yCoordinate: Int) -> UITextField {
-        let textField = UITextField()
-        textField.frame = CGRect(x: xCoordinate, y: yCoordinate, width: 360, height: 25)
-        textField.placeholder = placeholder
-        textField.backgroundColor = .systemGray6
-        textField.leftView = UIImageView(image: UIImage(systemName: "magnifyingglass"))
-        textField.leftViewMode = .always
-        textField.rightView = UIImageView(image: UIImage(systemName: "mic.fill"))
-        textField.rightViewMode = .always
-        return textField
-    }
-    
     func makeButton(title: String, xCoordinate: Int, yCoordinate: Int) -> UIButton {
         let button = UIButton(configuration: .plain())
         button.setTitle(title, for: .normal)
@@ -202,7 +198,7 @@ private extension SearchViewController {
     
     func makeMagnifyingGlass(yCoordinate: Int) -> UIImageView {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "magnifyingglass")
+        imageView.image = UIImage(systemName: Constants.systemImageGlass)
         imageView.tintColor = .label
         imageView.frame = CGRect(x: 20, y: yCoordinate, width: 20, height: 20)
         imageView.contentMode = .scaleAspectFit

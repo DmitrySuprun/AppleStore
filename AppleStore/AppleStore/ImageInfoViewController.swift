@@ -9,6 +9,11 @@ import UIKit
 
 /// Information about current product
 final class ImageInfoViewController: UIViewController {
+    // MARK: - Constants
+    enum Constant {
+        static let emptyText = ""
+    }
+    
     // MARK: - Public Properties
     var productImage: String?
     var productName: String?
@@ -23,7 +28,7 @@ final class ImageInfoViewController: UIViewController {
     
     private lazy var productImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: productImage ?? "")
+        image.image = UIImage(named: productImage ?? Constant.emptyText)
         image.frame = CGRect(x: 50, y: 200, width: 300, height: 300)
         image.contentMode = .scaleAspectFit
         return image
