@@ -22,6 +22,7 @@ final class StoreTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createTabsAction()
+        view.backgroundColor = .systemBackground
     }
     
     // MARK: - Private Properties
