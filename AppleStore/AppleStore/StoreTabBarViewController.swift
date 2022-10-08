@@ -27,10 +27,13 @@ final class StoreTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createTabsAction()
-        view.backgroundColor = .systemBackground
     }
     
     // MARK: - Private Properties
+    private func setupUI() {
+        view.backgroundColor = .systemBackground
+    }
+    
     private func createTabsAction() {
         let firstViewController = ShopViewController()
         let secondViewController = SessionsViewController()
