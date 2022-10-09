@@ -18,6 +18,7 @@
 		D552D59D28EF19D00086F205 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D59C28EF19D00086F205 /* SearchViewController.swift */; };
 		D552D59F28EF19DB0086F205 /* BagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D59E28EF19DB0086F205 /* BagViewController.swift */; };
 		D552D5A128EF78A70086F205 /* ImageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D5A028EF78A70086F205 /* ImageInfoViewController.swift */; };
+		D562E6B228F223950022F271 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D562E6B128F223950022F271 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		D552D59C28EF19D00086F205 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D552D59E28EF19DB0086F205 /* BagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagViewController.swift; sourceTree = "<group>"; };
 		D552D5A028EF78A70086F205 /* ImageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoViewController.swift; sourceTree = "<group>"; };
+		D562E6B128F223950022F271 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,11 +77,20 @@
 				D552D59C28EF19D00086F205 /* SearchViewController.swift */,
 				D552D5A028EF78A70086F205 /* ImageInfoViewController.swift */,
 				D552D59E28EF19DB0086F205 /* BagViewController.swift */,
+				D562E6B328F2239F0022F271 /* ProductModel */,
 				D552D58928EEEA410086F205 /* Assets.xcassets */,
 				D552D58B28EEEA410086F205 /* LaunchScreen.storyboard */,
 				D552D58E28EEEA410086F205 /* Info.plist */,
 			);
 			path = AppleStore;
+			sourceTree = "<group>";
+		};
+		D562E6B328F2239F0022F271 /* ProductModel */ = {
+			isa = PBXGroup;
+			children = (
+				D562E6B128F223950022F271 /* Product.swift */,
+			);
+			path = ProductModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +193,7 @@
 				D552D59F28EF19DB0086F205 /* BagViewController.swift in Sources */,
 				D552D59B28EF19740086F205 /* ForYouViewController.swift in Sources */,
 				D552D58128EEEA3F0086F205 /* AppDelegate.swift in Sources */,
+				D562E6B228F223950022F271 /* Product.swift in Sources */,
 				D552D59728EF16910086F205 /* StoreTabBarViewController.swift in Sources */,
 				D552D58328EEEA3F0086F205 /* SceneDelegate.swift in Sources */,
 			);
