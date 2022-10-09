@@ -13,6 +13,10 @@ final class ImageInfoViewController: UIViewController {
     enum Constant {
         static let emptyText = ""
         static let currencyChar = "$"
+        static let systemImageCheckmark = "checkmark.circle.fill"
+        static let systemImageHeart = "heart"
+        static let systemImageSquare = "square.and.arrow.up"
+        static let systemImageShippingBox = "shippingbox"
         static let compatibilityLabelText = "Compatible with MacBook Pro - Evgeny"
         static let addToBagButtonTitle = "Add to Bag"
         static let orderLabelText = """
@@ -24,23 +28,23 @@ final class ImageInfoViewController: UIViewController {
     
     // MARK: - Public Properties
     var products: [Product] = []
-    var currentTag = 0
+    var currentProductIndex = 0
     
     // MARK: - Private Properties
     
-    private lazy var productLabel = makeLabel(text: products[currentTag].description,
+    private lazy var productLabel = makeLabel(text: products[currentProductIndex].description,
                                               size: 16,
                                               weight: .bold,
                                               xCoordinate: 0,
                                               yCoordinate: 125)
     
-    private lazy var productPrice = makeLabel(text: "\(products[currentTag].price) \(Constant.currencyChar)",
+    private lazy var productPrice = makeLabel(text: "\(products[currentProductIndex].price) \(Constant.currencyChar)",
                                               size: 16,
                                               weight: .thin,
                                               xCoordinate: 0,
                                               yCoordinate: 150)
     private lazy var productImagesScrollView = makeScrollView()
-    private lazy var productSmallLabel = makeLabel(text: products[currentTag].description,
+    private lazy var productSmallLabel = makeLabel(text: products[currentProductIndex].description,
                                                    size: 11,
                                                    weight: .light,
                                                    xCoordinate: 0,
@@ -62,27 +66,27 @@ final class ImageInfoViewController: UIViewController {
         let scrollView = UIScrollView()
         scrollView.frame = view.bounds
         scrollView.contentSize = CGSize(width: view.bounds.maxX, height: view.bounds.maxY)
-        scrollView.contentMode = .top
+        scrollView.contentInset = UIEdgeInsets(top: -100, left: 0, bottom: 0, right: 0)
         return scrollView
     }()
     
     private lazy var checkMarkImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))
+        let imageView = UIImageView(image: UIImage(systemName: Constant.systemImageCheckmark))
         imageView.frame = CGRect(x: 60, y: 615, width: 20, height: 20)
         imageView.tintColor = .systemGreen
         return imageView
     }()
     
     private lazy var boxImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "shippingbox"))
+        let imageView = UIImageView(image: UIImage(systemName: Constant.systemImageShippingBox))
         imageView.frame = CGRect(x: 20, y: 750, width: 20, height: 20)
         imageView.tintColor = .systemGray
         return imageView
     }()
     
     private lazy var barButtonItems = {
-        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"))
-        let barButtonItem2 = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"))
+        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: Constant.systemImageHeart))
+        let barButtonItem2 = UIBarButtonItem(image: UIImage(systemName: Constant.systemImageSquare))
         return [barButtonItem, barButtonItem2]
     }()
     
@@ -124,6 +128,7 @@ final class ImageInfoViewController: UIViewController {
         pageScrollView.addSubview(compatibilityLabel)
         pageScrollView.addSubview(firstColorButton)
         pageScrollView.addSubview(secondColorButton)
+        secondColorButton.layer.shadowRadius = 3
         addGradientAction(button: secondColorButton)
         pageScrollView.addSubview(addToBagButton)
         pageScrollView.addSubview(orderInfoLabel)
@@ -161,7 +166,7 @@ final class ImageInfoViewController: UIViewController {
     
     private func addViewToScrollView() {
         var xCoordinate = 0
-        for item in products[currentTag].imagesName {
+        for item in products[currentProductIndex].imagesName {
             let imageView = makeImageView(image: item)
             imageView.frame = CGRect(x: xCoordinate, y: 0, width: 393, height: 180)
             productImagesScrollView.addSubview(imageView)

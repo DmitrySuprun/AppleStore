@@ -38,33 +38,10 @@ final class SearchViewController: UIViewController {
         static let leatherCaseDescription = "Leather Case mackbook Pro 16\""
 
     }
-    // MARK: - Public Properties
-    var products = [Product(name: Constants.emptyString,
-                            imagesName: [
-                                Constants.caseImageName,
-                                Constants.case2ImageName,
-                                Constants.case3ImageName
-                            ],
-                            description: Constants.caseDescription,
-                            price: 99),
-                    Product(name: Constants.emptyString,
-                            imagesName: [
-                                Constants.bandImageName,
-                                Constants.band2ImageName
-                            ],
-                            description: Constants.bandDescription,
-                            price: 29),
-                    Product(name: Constants.emptyString,
-                            imagesName: [
-                                Constants.leatherCaseImageName,
-                                Constants.leather2CaseImageName,
-                                Constants.leather3CaseImageName
-                            ],
-                            description: Constants.leatherCaseDescription,
-                            price: 79)
-    ]
     
     // MARK: - Private Properties
+    private lazy var products = loadProducts()
+
     private lazy var searchLabel = makeLabel(text: Constants.searchLabelText,
                                              size: 35,
                                              weight: .bold,
@@ -131,7 +108,7 @@ final class SearchViewController: UIViewController {
     // MARK: - Private Objc Methods
     @objc private func pushProductInfoAction(_ sender: UITapGestureRecognizer) {
         let nextViewController = ImageInfoViewController()
-        nextViewController.currentTag = sender.view?.tag ?? 0
+        nextViewController.currentProductIndex = sender.view?.tag ?? 0
         nextViewController.products = products
         navigationController?.pushViewController(nextViewController, animated: true)
     }
@@ -173,6 +150,33 @@ final class SearchViewController: UIViewController {
         view.addSubview(makeMagnifyingGlass(yCoordinate: 578))
         view.addSubview(makeMagnifyingGlass(yCoordinate: 628))
         view.addSubview(makeMagnifyingGlass(yCoordinate: 678))
+    }
+    
+    private func loadProducts() -> [Product] {
+        [Product(name: Constants.emptyString,
+                                imagesName: [
+                                    Constants.caseImageName,
+                                    Constants.case2ImageName,
+                                    Constants.case3ImageName
+                                ],
+                                description: Constants.caseDescription,
+                                price: 99),
+                        Product(name: Constants.emptyString,
+                                imagesName: [
+                                    Constants.bandImageName,
+                                    Constants.band2ImageName
+                                ],
+                                description: Constants.bandDescription,
+                                price: 29),
+                        Product(name: Constants.emptyString,
+                                imagesName: [
+                                    Constants.leatherCaseImageName,
+                                    Constants.leather2CaseImageName,
+                                    Constants.leather3CaseImageName
+                                ],
+                                description: Constants.leatherCaseDescription,
+                                price: 79)
+        ]
     }
 }
 
