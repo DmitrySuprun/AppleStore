@@ -12,6 +12,10 @@ class BagViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+    }
+    
+    // MARK: - Private Methods
+    private func setupUI() {
+        view.backgroundColor = .systemBackground
     }
 }
