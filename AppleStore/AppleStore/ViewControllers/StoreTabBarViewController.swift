@@ -27,10 +27,13 @@ final class StoreTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createTabsAction()
-        view.backgroundColor = .systemBackground
     }
     
     // MARK: - Private Properties
+    private func setupUI() {
+        view.backgroundColor = .systemBackground
+    }
+    
     private func createTabsAction() {
         let firstViewController = ShopViewController()
         let secondViewController = SessionsViewController()
@@ -51,7 +54,7 @@ final class StoreTabBarViewController: UITabBarController {
                                                       image: UIImage(systemName: Constant.systemImageGlass),
                                                       tag: 3)
         fifthViewController.tabBarItem = UITabBarItem(title: Constant.bagItemTitle,
-                                                      image: UIImage(systemName: Constant.systemImageGlass),
+                                                      image: UIImage(systemName: Constant.systemImageBag),
                                                       tag: 4)
         viewControllers = [
             firstViewController,
