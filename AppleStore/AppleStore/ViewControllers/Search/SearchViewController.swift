@@ -21,7 +21,7 @@ final class SearchViewController: UIViewController {
         static let shopByLabel = "Shop by appointment"
         static let findAStoreLabel = "Find a store"
         static let systemImageGlass = "magnifyingglass"
-
+        
         static let caseImageName = "case"
         static let case2ImageName = "case2"
         static let case3ImageName = "case3"
@@ -36,12 +36,15 @@ final class SearchViewController: UIViewController {
         static let caseDescription = "Incase Flat mackbook Pro 16\""
         static let bandDescription = "Sport band Black Unity for Apple watch7"
         static let leatherCaseDescription = "Leather Case mackbook Pro 16\""
-
+        
+        static let caseURL = "https://www.apple.com/shop/product/HQ292ZM/A/incase-compact-sleeve-in-flight-nylon-for-16-macbook-pro?fnode=8941b688caeb9f1a13ebc4d425b079bd374bc2e03b5f6682b263ef1f6f9132be58ac8c71ebd4e97dd1e41d4cfc6bbd5cf68e50751cfc425761043e83923f6fc1013200a6e44740654e4d6d13a8ff0fcacd7ff8c32b8c29dd04daf61c9d9b8910"
+        static let bandURL = "https://www.apple.com/shop/product/MJ4V3AM/A/40mm-black-unity-sport-band-regular?fnode=2bf27ab6d3c607e280709c340399991a3610ba2adedde34df3d3fcfe787809255fe7c857604fc06e424ad4798cd4fcd61a53a0a250fbcb3a6c6220c28048d2ac7de3afd8b73a69ba746b48dfa4083e2e"
+        static let leatherURL = "https://www.apple.com/shop/product/HPZR2ZM/A/von-holzhausen-macbook-16-portfolio?fnode=fe63877cbbf64adb82fd4531dfc4f59c6fcf5a357960bf89dcc83b47f6c8eb5f41fdfe8e8df69c3f8fb2d07ea7770bfe94818396157082f2a1bcab0179a35a53d183153a6a87b53d605f44ff26c886ea6858aa11b77ed2846baa71eb0fa7aafc"
     }
     
     // MARK: - Private Properties
     private lazy var products = loadProducts()
-
+    
     private lazy var searchLabel = makeLabel(text: Constants.searchLabelText,
                                              size: 35,
                                              weight: .bold,
@@ -98,7 +101,7 @@ final class SearchViewController: UIViewController {
                                             weight: .light,
                                             xCoordinate: 60,
                                             yCoordinate: 675)
-
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,7 +135,7 @@ final class SearchViewController: UIViewController {
         productsScrollView.addSubview(thirdView)
         let maxXContentSizeProductsScrollView = productsScrollView.subviews.map { $0.frame.maxX }.max()
         productsScrollView.contentSize = CGSize(width: maxXContentSizeProductsScrollView ?? 0, height: 190)
-
+        
         firstView.addSubview(firstImageView)
         firstView.addSubview(firstLabel)
         firstLabel.frame.size = CGSize(width: 120, height: 50)
@@ -153,33 +156,35 @@ final class SearchViewController: UIViewController {
         view.addSubview(makeLineView(yCoordinate: 655))
         view.addSubview(makeMagnifyingGlass(yCoordinate: 678))
         view.addSubview(makeLineView(yCoordinate: 705))
-
+        
     }
     
     private func loadProducts() -> [Product] {
         [Product(name: Constants.emptyString,
-                                imagesName: [
-                                    Constants.caseImageName,
-                                    Constants.case2ImageName,
-                                    Constants.case3ImageName
-                                ],
-                                description: Constants.caseDescription,
-                                price: 99),
-                        Product(name: Constants.emptyString,
-                                imagesName: [
-                                    Constants.bandImageName,
-                                    Constants.band2ImageName
-                                ],
-                                description: Constants.bandDescription,
-                                price: 29),
-                        Product(name: Constants.emptyString,
-                                imagesName: [
-                                    Constants.leatherCaseImageName,
-                                    Constants.leather2CaseImageName,
-                                    Constants.leather3CaseImageName
-                                ],
-                                description: Constants.leatherCaseDescription,
-                                price: 79)
+                 imagesName: [
+                    Constants.caseImageName,
+                    Constants.case2ImageName,
+                    Constants.case3ImageName
+                 ],
+                 description: Constants.caseDescription,
+                 price: 99,
+                 url: Constants.caseURL),
+         Product(name: Constants.emptyString,
+                 imagesName: [
+                    Constants.bandImageName,
+                    Constants.band2ImageName
+                 ],
+                 description: Constants.bandDescription,
+                 price: 29,
+                 url: Constants.bandURL),
+         Product(name: Constants.emptyString,
+                 imagesName: [
+                    Constants.leatherCaseImageName,
+                    Constants.leather2CaseImageName,
+                    Constants.leather3CaseImageName
+                 ],
+                 description: Constants.leatherCaseDescription,
+                 price: 79, url: Constants.leatherURL)
         ]
     }
 }

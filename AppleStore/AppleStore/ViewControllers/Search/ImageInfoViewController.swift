@@ -105,6 +105,9 @@ final class ImageInfoViewController: UIViewController {
     @objc private func presentWebViewControllerAction() {
         let webViewController = OnlineStoreViewController()
         webViewController.modalPresentationStyle = .formSheet
+        if products.indices.contains(currentProductIndex) {
+            webViewController.currentProduct = products[currentProductIndex]
+        }
         present(webViewController, animated: true)
     }
     
