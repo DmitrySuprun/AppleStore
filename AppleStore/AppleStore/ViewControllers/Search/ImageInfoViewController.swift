@@ -102,6 +102,12 @@ final class ImageInfoViewController: UIViewController {
         secondColorButton.layer.shadowRadius = sender === secondColorButton ? 3 : 0
     }
     
+    @objc private func presentWebViewControllerAction() {
+        let webViewController = OnlineStoreViewController()
+        webViewController.modalPresentationStyle = .formSheet
+        present(webViewController, animated: true)
+    }
+    
     // MARK: - Private Methods
     private func setupUI() {
         view.backgroundColor = .systemBackground
@@ -202,6 +208,9 @@ extension ImageInfoViewController {
     func makeImageView(image: String) -> UIImageView {
         let imageView = UIImageView(image: UIImage(named: image))
         imageView.contentMode = .scaleAspectFit
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(presentWebViewControllerAction))
+        imageView.addGestureRecognizer(gestureRecognizer)
+        imageView.isUserInteractionEnabled = true
         return imageView
     }
     

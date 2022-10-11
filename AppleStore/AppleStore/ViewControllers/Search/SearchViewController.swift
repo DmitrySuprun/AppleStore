@@ -83,7 +83,7 @@ final class SearchViewController: UIViewController {
     private lazy var trySearchingLabel = makeLabel(text: Constants.trySearchingLabelText,
                                                    size: 22,
                                                    weight: .bold,
-                                                   xCoordinate: 5,
+                                                   xCoordinate: 20,
                                                    yCoordinate: 525)
     private lazy var myOrderLabel = makeLabel(text: Constants.myOrderLabel,
                                               size: 20,
@@ -148,8 +148,12 @@ final class SearchViewController: UIViewController {
         view.addSubview(shopByLabel)
         view.addSubview(findAStore)
         view.addSubview(makeMagnifyingGlass(yCoordinate: 578))
+        view.addSubview(makeLineView(yCoordinate: 605))
         view.addSubview(makeMagnifyingGlass(yCoordinate: 628))
+        view.addSubview(makeLineView(yCoordinate: 655))
         view.addSubview(makeMagnifyingGlass(yCoordinate: 678))
+        view.addSubview(makeLineView(yCoordinate: 705))
+
     }
     
     private func loadProducts() -> [Product] {
@@ -247,5 +251,12 @@ private extension SearchViewController {
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .systemGray
         return imageView
+    }
+    
+    private func makeLineView(yCoordinate: CGFloat) -> UIView {
+        let line = UIView()
+        line.backgroundColor = .systemGray6
+        line.frame = CGRect(x: 15, y: yCoordinate, width: view.frame.width - 30, height: 2)
+        return line
     }
 }
