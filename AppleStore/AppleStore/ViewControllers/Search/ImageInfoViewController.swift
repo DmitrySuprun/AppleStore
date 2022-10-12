@@ -10,7 +10,7 @@ import UIKit
 /// Information about current product
 final class ImageInfoViewController: UIViewController {
     // MARK: - Constants
-    enum Constant {
+    enum Constants {
         static let emptyText = ""
         static let currencyChar = "$"
         static let systemImageCheckmark = "checkmark.circle.fill"
@@ -38,7 +38,7 @@ final class ImageInfoViewController: UIViewController {
                                               xCoordinate: 0,
                                               yCoordinate: 125)
     
-    private lazy var productPrice = makeLabel(text: "\(products[currentProductIndex].price) \(Constant.currencyChar)",
+    private lazy var productPrice = makeLabel(text: "\(products[currentProductIndex].price) \(Constants.currencyChar)",
                                               size: 16,
                                               weight: .thin,
                                               xCoordinate: 0,
@@ -49,7 +49,7 @@ final class ImageInfoViewController: UIViewController {
                                                    weight: .light,
                                                    xCoordinate: 0,
                                                    yCoordinate: 470)
-    private lazy var compatibilityLabel = makeLabel(text: Constant.compatibilityLabelText,
+    private lazy var compatibilityLabel = makeLabel(text: Constants.compatibilityLabelText,
                                                     size: 11,
                                                     weight: .light,
                                                     xCoordinate: 0,
@@ -57,7 +57,7 @@ final class ImageInfoViewController: UIViewController {
     private lazy var firstColorButton = makeRoundButton(xCoordinate: 145)
     private lazy var secondColorButton = makeRoundButton(xCoordinate: 205)
     private lazy var addToBagButton = makeButton()
-    private lazy var orderInfoLabel = makeLabel(text: Constant.orderLabelText,
+    private lazy var orderInfoLabel = makeLabel(text: Constants.orderLabelText,
                                                 size: 11,
                                                 weight: .bold,
                                                 xCoordinate: 0,
@@ -71,22 +71,22 @@ final class ImageInfoViewController: UIViewController {
     }()
     
     private lazy var checkMarkImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: Constant.systemImageCheckmark))
+        let imageView = UIImageView(image: UIImage(systemName: Constants.systemImageCheckmark))
         imageView.frame = CGRect(x: 60, y: 615, width: 20, height: 20)
         imageView.tintColor = .systemGreen
         return imageView
     }()
     
     private lazy var boxImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: Constant.systemImageShippingBox))
+        let imageView = UIImageView(image: UIImage(systemName: Constants.systemImageShippingBox))
         imageView.frame = CGRect(x: 20, y: 750, width: 20, height: 20)
         imageView.tintColor = .systemGray
         return imageView
     }()
     
     private lazy var barButtonItems = {
-        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: Constant.systemImageHeart))
-        let barButtonItem2 = UIBarButtonItem(image: UIImage(systemName: Constant.systemImageSquare))
+        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.systemImageHeart))
+        let barButtonItem2 = UIBarButtonItem(image: UIImage(systemName: Constants.systemImageSquare))
         return [barButtonItem, barButtonItem2]
     }()
     
@@ -146,11 +146,11 @@ final class ImageInfoViewController: UIViewController {
     }
     
     private func addAttributedTextAction() {
-        var attributedString = NSMutableAttributedString(string: Constant.compatibilityLabelText)
+        var attributedString = NSMutableAttributedString(string: Constants.compatibilityLabelText)
         attributedString.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.systemBlue],
                                        range: NSRange(location: 16, length: 20))
         compatibilityLabel.attributedText = attributedString
-        attributedString = NSMutableAttributedString(string: Constant.orderLabelText)
+        attributedString = NSMutableAttributedString(string: Constants.orderLabelText)
         attributedString.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.systemGray],
                                        range: NSRange(location: 39, length: 17))
         attributedString.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.systemBlue],
@@ -238,7 +238,7 @@ extension ImageInfoViewController {
     func makeButton() -> UIButton {
         let button = UIButton()
         var config = UIButton.Configuration.filled()
-        config.title = Constant.addToBagButtonTitle
+        config.title = Constants.addToBagButtonTitle
         button.frame = CGRect(x: 10, y: 670, width: 373, height: 40)
         button.configuration = config
         return button

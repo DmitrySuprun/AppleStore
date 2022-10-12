@@ -9,8 +9,8 @@ import UIKit
 
 /// MainTabBarController. Tabs: Shop. For you. Search. Bag.
 final class StoreTabBarViewController: UITabBarController {
-    // MARK: - Constant
-    private enum Constant {
+    // MARK: - Constants
+    private enum Constants {
         static let shopItemTitle = "Shop"
         static let sessionItemTitle = "Session"
         static let forYouItemTitle = "For You"
@@ -38,29 +38,30 @@ final class StoreTabBarViewController: UITabBarController {
         let firstViewController = ShopViewController()
         let secondViewController = SessionsViewController()
         let thirdViewController = ForYouViewController()
+        let thirdNavigationController = UINavigationController(rootViewController: thirdViewController)
         let forthViewController = SearchViewController()
-        let navigationController = UINavigationController(rootViewController: forthViewController)
+        let forthNavigationController = UINavigationController(rootViewController: forthViewController)
         let fifthViewController = BagViewController()
-        firstViewController.tabBarItem = UITabBarItem(title: Constant.shopItemTitle,
-                                                      image: UIImage(systemName: Constant.systemImageLaptopiPhone),
+        firstViewController.tabBarItem = UITabBarItem(title: Constants.shopItemTitle,
+                                                      image: UIImage(systemName: Constants.systemImageLaptopiPhone),
                                                       tag: 0)
-        secondViewController.tabBarItem = UITabBarItem(title: Constant.sessionItemTitle,
-                                                       image: UIImage(systemName: Constant.systemImageCalendar),
+        secondViewController.tabBarItem = UITabBarItem(title: Constants.sessionItemTitle,
+                                                       image: UIImage(systemName: Constants.systemImageCalendar),
                                                        tag: 1)
-        thirdViewController.tabBarItem = UITabBarItem(title: Constant.forYouItemTitle,
-                                                      image: UIImage(systemName: Constant.systemImagePerson),
+        thirdViewController.tabBarItem = UITabBarItem(title: Constants.forYouItemTitle,
+                                                      image: UIImage(systemName: Constants.systemImagePerson),
                                                       tag: 2)
-        forthViewController.tabBarItem = UITabBarItem(title: Constant.searchItemTitle,
-                                                      image: UIImage(systemName: Constant.systemImageGlass),
+        forthViewController.tabBarItem = UITabBarItem(title: Constants.searchItemTitle,
+                                                      image: UIImage(systemName: Constants.systemImageGlass),
                                                       tag: 3)
-        fifthViewController.tabBarItem = UITabBarItem(title: Constant.bagItemTitle,
-                                                      image: UIImage(systemName: Constant.systemImageBag),
+        fifthViewController.tabBarItem = UITabBarItem(title: Constants.bagItemTitle,
+                                                      image: UIImage(systemName: Constants.systemImageBag),
                                                       tag: 4)
         viewControllers = [
             firstViewController,
             secondViewController,
-            thirdViewController,
-            navigationController,
+            thirdNavigationController,
+            forthNavigationController,
             fifthViewController
         ]
     }

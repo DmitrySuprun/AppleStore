@@ -8,10 +8,17 @@
 import UIKit
 import WebKit
 
-/// Online Store WKWebView
+/// Online Store WKWebView browser
 final class OnlineStoreViewController: UIViewController {
     // MARK: - Constants
-    private enum Constant {
+    private enum Constants {
+        static let emptyString = ""
+        static let localPDF = "iOSNotesForProfessionals"
+        static let extensionPDF = "pdf"
+        static let systemNameChevronBack = "chevron.backward"
+        static let systemNameChevronForward = "chevron.forward"
+        static let systemNameShare = "square.and.arrow.up"
+        static let systemNameInfo = "info.circle"
     }
     
     // MARK: - Public Properties
@@ -19,7 +26,7 @@ final class OnlineStoreViewController: UIViewController {
     var observation: NSKeyValueObservation?
     
     // MARK: - Private Properties
-    private lazy var url = URL(string: currentProduct?.url ?? "")
+    private lazy var url = URL(string: currentProduct?.url ?? Constants.emptyString)
     private lazy var browserWebView = makeWKWebView(url)
     private lazy var navigationToolBar = makeToolBar()
     private lazy var loadProgress = makeProgressView()
@@ -28,14 +35,7 @@ final class OnlineStoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        observation = browserWebView.observe(\.estimatedProgress, options: .new, changeHandler: { _, _ in
-            self.loadProgress.progress = Float(self.browserWebView.estimatedProgress)
-            if self.browserWebView.estimatedProgress == 1 {
-                self.loadProgress.isHidden = true
-            } else {
-                self.loadProgress.isHidden = false
-            }
-        })
+        addObservation()
     }
 
     // MARK: - Objc Private Methods
@@ -54,7 +54,7 @@ final class OnlineStoreViewController: UIViewController {
     }
     
     @objc private func openPDF() {
-        if let pdfURL = Bundle.main.url(forResource: "iOSNotesForProfessionals", withExtension: "pdf") {
+        if let pdfURL = Bundle.main.url(forResource: Constants.localPDF, withExtension: Constants.extensionPDF) {
             browserWebView.loadFileURL(pdfURL, allowingReadAccessTo: pdfURL)
         }
     }
@@ -77,6 +77,17 @@ final class OnlineStoreViewController: UIViewController {
         navigationToolBar.sizeToFit()
         view.addSubview(loadProgress)
     }
+    
+    private func addObservation() {
+        observation = browserWebView.observe(\.estimatedProgress, options: .new, changeHandler: { _, _ in
+            self.loadProgress.progress = Float(self.browserWebView.estimatedProgress)
+            if self.browserWebView.estimatedProgress == 1 {
+                self.loadProgress.isHidden = true
+            } else {
+                self.loadProgress.isHidden = false
+            }
+        })
+    }
 }
 
 // MARK: - Factory
@@ -93,19 +104,19 @@ private extension OnlineStoreViewController {
     
     func makeToolBar() -> UIToolbar {
         let toolBar = UIToolbar()
-        let backBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"),
+        let backBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.systemNameChevronBack),
                                                 style: .plain,
                                                 target: self,
                                                 action: #selector(previousPageAction))
-        let forwardBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.forward"),
+        let forwardBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.systemNameChevronForward),
                                                    style: .plain,
                                                    target: self,
                                                    action: #selector(nextPageAction))
-        let shareBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"),
+        let shareBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.systemNameShare),
                                                  style: .plain,
                                                  target: self,
                                                  action: #selector(shareURL))
-        let infoBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle"),
+        let infoBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.systemNameInfo),
                                                 style: .plain,
                                                 target: self,
                                                 action: #selector(openPDF))
@@ -133,10 +144,6 @@ private extension OnlineStoreViewController {
         progressView.frame = CGRect(x: 0, y: 716, width: 393, height: 5)
         return progressView
     }
-}
-
-// MARK: - WKUIDelegate
-extension OnlineStoreViewController: WKUIDelegate {
 }
 
 // MARK: - UIScrollViewDelegate

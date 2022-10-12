@@ -20,7 +20,8 @@
 		D552D5A128EF78A70086F205 /* ImageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D552D5A028EF78A70086F205 /* ImageInfoViewController.swift */; };
 		D562E6B228F223950022F271 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D562E6B128F223950022F271 /* Product.swift */; };
 		D562E6B728F4705A0022F271 /* OnlineStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D562E6B628F4705A0022F271 /* OnlineStoreViewController.swift */; };
-		D562E6B928F57FFB0022F271 /* iOSNotesForProfessionals.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D562E6B828F57FFB0022F271 /* iOSNotesForProfessionals.pdf */; };
+		D562E6BE28F614880022F271 /* ExtensionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D562E6BD28F614880022F271 /* ExtensionUIImage.swift */; };
+		D562E6C028F623CD0022F271 /* iOSNotesForProfessionals.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D562E6BF28F623CD0022F271 /* iOSNotesForProfessionals.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +40,8 @@
 		D552D5A028EF78A70086F205 /* ImageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoViewController.swift; sourceTree = "<group>"; };
 		D562E6B128F223950022F271 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		D562E6B628F4705A0022F271 /* OnlineStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStoreViewController.swift; sourceTree = "<group>"; };
-		D562E6B828F57FFB0022F271 /* iOSNotesForProfessionals.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = iOSNotesForProfessionals.pdf; path = ../../../../Desktop/iOSNotesForProfessionals.pdf; sourceTree = "<group>"; };
+		D562E6BD28F614880022F271 /* ExtensionUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIImage.swift; sourceTree = "<group>"; };
+		D562E6BF28F623CD0022F271 /* iOSNotesForProfessionals.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = iOSNotesForProfessionals.pdf; path = ../../../../Desktop/iOSNotesForProfessionals.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,12 +76,13 @@
 			children = (
 				D552D58028EEEA3F0086F205 /* AppDelegate.swift */,
 				D552D58228EEEA3F0086F205 /* SceneDelegate.swift */,
+				D562E6BD28F614880022F271 /* ExtensionUIImage.swift */,
 				D562E6B428F46FB40022F271 /* ViewControllers */,
 				D562E6B328F2239F0022F271 /* ProductModel */,
 				D552D58928EEEA410086F205 /* Assets.xcassets */,
 				D552D58B28EEEA410086F205 /* LaunchScreen.storyboard */,
 				D552D58E28EEEA410086F205 /* Info.plist */,
-				D562E6B828F57FFB0022F271 /* iOSNotesForProfessionals.pdf */,
+				D562E6BF28F623CD0022F271 /* iOSNotesForProfessionals.pdf */,
 			);
 			path = AppleStore;
 			sourceTree = "<group>";
@@ -175,7 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D552D58D28EEEA410086F205 /* LaunchScreen.storyboard in Resources */,
-				D562E6B928F57FFB0022F271 /* iOSNotesForProfessionals.pdf in Resources */,
+				D562E6C028F623CD0022F271 /* iOSNotesForProfessionals.pdf in Resources */,
 				D552D58A28EEEA410086F205 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +215,7 @@
 				D552D5A128EF78A70086F205 /* ImageInfoViewController.swift in Sources */,
 				D552D59928EF18FE0086F205 /* SessionsViewController.swift in Sources */,
 				D552D59D28EF19D00086F205 /* SearchViewController.swift in Sources */,
+				D562E6BE28F614880022F271 /* ExtensionUIImage.swift in Sources */,
 				D552D58528EEEA3F0086F205 /* ShopViewController.swift in Sources */,
 				D552D59F28EF19DB0086F205 /* BagViewController.swift in Sources */,
 				D552D59B28EF19740086F205 /* ForYouViewController.swift in Sources */,

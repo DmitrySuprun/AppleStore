@@ -9,10 +9,10 @@ import UIKit
 
 /// Search products, session, store etc.
 final class SearchViewController: UIViewController {
-    // MARK: - Constant
+    // MARK: - Constants
     private enum Constants {
         static let emptyString = ""
-        static let searchLabelText = "Search"
+        static let title = "Search"
         static let searchTextFieldPlaceholderText = "What are you looking for?"
         static let recentlyViewedLabelText = "Recently Viewed"
         static let clearButtonTitle = "Clear"
@@ -45,12 +45,7 @@ final class SearchViewController: UIViewController {
     // MARK: - Private Properties
     private lazy var products = loadProducts()
     
-    private lazy var searchLabel = makeLabel(text: Constants.searchLabelText,
-                                             size: 35,
-                                             weight: .bold,
-                                             xCoordinate: 20,
-                                             yCoordinate: 120)
-    private lazy var searchBar = makeSearchBar(placeholder: Constants.searchLabelText,
+    private lazy var searchBar = makeSearchBar(placeholder: Constants.title,
                                                xCoordinate: 5,
                                                yCoordinate: 170)
     private lazy var recentlyViewedLabel = makeLabel(text: Constants.recentlyViewedLabelText,
@@ -118,13 +113,13 @@ final class SearchViewController: UIViewController {
     
     // MARK: - Private Methods
     private func setupUI() {
-        title = "Search"
+        title = Constants.title
         view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles = true
         addViews()
     }
     
     private func addViews() {
-        view.addSubview(searchLabel)
         view.addSubview(searchBar)
         view.addSubview(recentlyViewedLabel)
         view.addSubview(clearButton)
