@@ -9,18 +9,18 @@ import UIKit
 
 /// MainTabBarController. Tabs: Shop. For you. Search. Bag.
 final class StoreTabBarViewController: UITabBarController {
-    // MARK: - Constant
-    private enum Constant {
+    // MARK: - Constants
+    private enum Constants {
         static let shopItemTitle = "Shop"
         static let sessionItemTitle = "Session"
         static let forYouItemTitle = "For You"
         static let searchItemTitle = "Search"
         static let bagItemTitle = "Bag"
-        static let systemImageLaptopiPhone = "laptopcomputer.and.iphone"
-        static let systemImageCalendar = "calendar"
-        static let systemImagePerson = "person.circle"
-        static let systemImageGlass = "magnifyingglass"
-        static let systemImageBag = "bag"
+        static let laptopiPhoneSystemImageName = "laptopcomputer.and.iphone"
+        static let calendarSystemImageName = "calendar"
+        static let personSystemImageName = "person.circle"
+        static let glassSystemImageName = "magnifyingglass"
+        static let bagSystemImageName = "bag"
     }
     
     // MARK: - LifeCycle
@@ -38,29 +38,30 @@ final class StoreTabBarViewController: UITabBarController {
         let firstViewController = ShopViewController()
         let secondViewController = SessionsViewController()
         let thirdViewController = ForYouViewController()
+        let thirdNavigationController = UINavigationController(rootViewController: thirdViewController)
         let forthViewController = SearchViewController()
-        let navigationController = UINavigationController(rootViewController: forthViewController)
+        let forthNavigationController = UINavigationController(rootViewController: forthViewController)
         let fifthViewController = BagViewController()
-        firstViewController.tabBarItem = UITabBarItem(title: Constant.shopItemTitle,
-                                                      image: UIImage(systemName: Constant.systemImageLaptopiPhone),
+        firstViewController.tabBarItem = UITabBarItem(title: Constants.shopItemTitle,
+                                                      image: UIImage(systemName: Constants.laptopiPhoneSystemImageName),
                                                       tag: 0)
-        secondViewController.tabBarItem = UITabBarItem(title: Constant.sessionItemTitle,
-                                                       image: UIImage(systemName: Constant.systemImageCalendar),
+        secondViewController.tabBarItem = UITabBarItem(title: Constants.sessionItemTitle,
+                                                       image: UIImage(systemName: Constants.calendarSystemImageName),
                                                        tag: 1)
-        thirdViewController.tabBarItem = UITabBarItem(title: Constant.forYouItemTitle,
-                                                      image: UIImage(systemName: Constant.systemImagePerson),
+        thirdViewController.tabBarItem = UITabBarItem(title: Constants.forYouItemTitle,
+                                                      image: UIImage(systemName: Constants.personSystemImageName),
                                                       tag: 2)
-        forthViewController.tabBarItem = UITabBarItem(title: Constant.searchItemTitle,
-                                                      image: UIImage(systemName: Constant.systemImageGlass),
+        forthViewController.tabBarItem = UITabBarItem(title: Constants.searchItemTitle,
+                                                      image: UIImage(systemName: Constants.glassSystemImageName),
                                                       tag: 3)
-        fifthViewController.tabBarItem = UITabBarItem(title: Constant.bagItemTitle,
-                                                      image: UIImage(systemName: Constant.systemImageBag),
+        fifthViewController.tabBarItem = UITabBarItem(title: Constants.bagItemTitle,
+                                                      image: UIImage(systemName: Constants.bagSystemImageName),
                                                       tag: 4)
         viewControllers = [
             firstViewController,
             secondViewController,
-            thirdViewController,
-            navigationController,
+            thirdNavigationController,
+            forthNavigationController,
             fifthViewController
         ]
     }
