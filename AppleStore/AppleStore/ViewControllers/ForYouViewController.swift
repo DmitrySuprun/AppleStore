@@ -12,20 +12,20 @@ final class ForYouViewController: UIViewController {
     // MARK: - Constants
     private enum Constants {
         static let title = "For You"
-        static let emptyString = ""
+        static let emptyName = ""
         static let hereLabelText = "Here's what's happening "
         static let suggestedLabelText = "Suggested for you"
         static let orderLabelText = "Get news about your order in real time"
         static let orderLightLabelText = "Turn on notifications to receive news about your order"
-        static let systemNameRightChevron = "chevron.right"
-        static let systemNameAppBadge = "app.badge"
+        static let rightChevronSystemImageName = "chevron.right"
+        static let appBadgeSystemImageName = "app.badge"
         static let airpodsImageName = "apple-airpod"
         static let sendLabelText = "Your order has been sent"
         static let countLabelText = "1 item shipping tomorrow"
         static let processedLabelText = "Processed"
         static let sentLabelText = "sent"
         static let deliveredLabelText = "delivered"
-        static let userDefaultsKey = "avatar"
+        static let avatarKey = "avatar"
         static let recommendedLabelText = "Recommended for your devices"
         static let seeAllLabelText = "See all"
     }
@@ -48,10 +48,10 @@ final class ForYouViewController: UIViewController {
                                                  size: 15,
                                                  weight: .light,
                                                  frame: CGRect(x: 130, y: 550, width: 200, height: 60))
-    private lazy var badgeImageView = makeImageView(systemName: Constants.systemNameAppBadge,
+    private lazy var badgeImageView = makeImageView(systemName: Constants.appBadgeSystemImageName,
                                                     tintColor: .systemRed,
                                                     frame: CGRect(x: 40, y: 515, width: 40, height: 40))
-    private lazy var rightChevronImageView = makeImageView(systemName: Constants.systemNameRightChevron,
+    private lazy var rightChevronImageView = makeImageView(systemName: Constants.rightChevronSystemImageName,
                                                            frame: CGRect(x: 359, y: 550, width: 15, height: 15))
     private lazy var topLineView = makeLineView(yCoordinate: 145)
     private lazy var bottomLineView = makeLineView(yCoordinate: 630)
@@ -76,7 +76,7 @@ final class ForYouViewController: UIViewController {
                                                 weight: .regular,
                                                 xCoordinate: 280,
                                                 yCoordinate: 120)
-    private lazy var topChevronImageView = makeImageView(systemName: Constants.systemNameRightChevron,
+    private lazy var topChevronImageView = makeImageView(systemName: Constants.rightChevronSystemImageName,
                                                          tintColor: .systemGray,
                                                          frame: CGRect(x: 320, y: 40, width: 15, height: 15))
     private lazy var countLabel = makeLabel(text: Constants.countLabelText,
@@ -105,15 +105,13 @@ final class ForYouViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        overrideUserInterfaceStyle = .light
-        navigationController?.overrideUserInterfaceStyle = .light
-        tabBarController?.overrideUserInterfaceStyle = .light
+        super.viewWillAppear(animated)
+        switchUserInterfaceStyle(to: .light)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        overrideUserInterfaceStyle = .dark
-        navigationController?.overrideUserInterfaceStyle = .dark
-        tabBarController?.overrideUserInterfaceStyle = .dark
+        super.viewWillDisappear(animated)
+        switchUserInterfaceStyle(to: .dark)
     }
     
     // MARK: - Objc Private Methods
@@ -167,14 +165,21 @@ final class ForYouViewController: UIViewController {
             avatarImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
         }
     }
+    
+    private func switchUserInterfaceStyle(to style: UIUserInterfaceStyle) {
+        overrideUserInterfaceStyle = style
+        navigationController?.overrideUserInterfaceStyle = style
+        tabBarController?.overrideUserInterfaceStyle = style
+    }
+    
     private func saveToUserDefaults(image: Data) {
         let userDefaults = UserDefaults.standard
-        userDefaults.setValue(image, forKey: Constants.userDefaultsKey)
+        userDefaults.setValue(image, forKey: Constants.avatarKey)
     }
     
     private func loadFromUserDefaults() {
         let userDefaults = UserDefaults.standard
-        guard let data = userDefaults.object(forKey: Constants.userDefaultsKey) as? Data else { return }
+        guard let data = userDefaults.object(forKey: Constants.avatarKey) as? Data else { return }
         guard let image = UIImage(data: data) else { return }
         avatarImageView.image = image
     }

@@ -12,13 +12,13 @@ import WebKit
 final class OnlineStoreViewController: UIViewController {
     // MARK: - Constants
     private enum Constants {
-        static let emptyString = ""
-        static let localPDF = "iOSNotesForProfessionals"
-        static let extensionPDF = "pdf"
-        static let systemNameChevronBack = "chevron.backward"
-        static let systemNameChevronForward = "chevron.forward"
-        static let systemNameShare = "square.and.arrow.up"
-        static let systemNameInfo = "info.circle"
+        static let emptyName = ""
+        static let localPdfName = "iOSNotesForProfessionals"
+        static let extensionPDFName = "pdf"
+        static let chevronBackSystemImageName = "chevron.backward"
+        static let chevronForwardSystemImageName = "chevron.forward"
+        static let shareSystemImageName = "square.and.arrow.up"
+        static let infoSystemImageName = "info.circle"
     }
     
     // MARK: - Public Properties
@@ -26,7 +26,7 @@ final class OnlineStoreViewController: UIViewController {
     var observation: NSKeyValueObservation?
     
     // MARK: - Private Properties
-    private lazy var url = URL(string: currentProduct?.url ?? Constants.emptyString)
+    private lazy var url = URL(string: currentProduct?.urlName ?? Constants.emptyName)
     private lazy var browserWebView = makeWKWebView(url)
     private lazy var navigationToolBar = makeToolBar()
     private lazy var loadProgress = makeProgressView()
@@ -54,7 +54,8 @@ final class OnlineStoreViewController: UIViewController {
     }
     
     @objc private func openPDF() {
-        if let pdfURL = Bundle.main.url(forResource: Constants.localPDF, withExtension: Constants.extensionPDF) {
+        if let pdfURL = Bundle.main.url(forResource: Constants.localPdfName,
+                                        withExtension: Constants.extensionPDFName) {
             browserWebView.loadFileURL(pdfURL, allowingReadAccessTo: pdfURL)
         }
     }
@@ -104,19 +105,19 @@ private extension OnlineStoreViewController {
     
     func makeToolBar() -> UIToolbar {
         let toolBar = UIToolbar()
-        let backBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.systemNameChevronBack),
+        let backBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.chevronBackSystemImageName),
                                                 style: .plain,
                                                 target: self,
                                                 action: #selector(previousPageAction))
-        let forwardBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.systemNameChevronForward),
+        let forwardBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.chevronForwardSystemImageName),
                                                    style: .plain,
                                                    target: self,
                                                    action: #selector(nextPageAction))
-        let shareBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.systemNameShare),
+        let shareBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.shareSystemImageName),
                                                  style: .plain,
                                                  target: self,
                                                  action: #selector(shareURL))
-        let infoBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.systemNameInfo),
+        let infoBarButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.infoSystemImageName),
                                                 style: .plain,
                                                 target: self,
                                                 action: #selector(openPDF))

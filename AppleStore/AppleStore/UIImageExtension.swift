@@ -1,5 +1,5 @@
 //
-//  ExtensionUIImage.swift
+//  UIImageExtension.swift
 //  AppleStore
 //
 //  Created by Дмитрий Супрун on 12.10.22.

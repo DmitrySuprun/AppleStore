@@ -10,8 +10,8 @@ import Foundation
 /// Product description
 struct Product {
     let name: String
-    var imagesName: [String]
+    var imagesNames: [String]
     var description: String
     var price: Int
-    var url: String
+    var urlName: String
 }

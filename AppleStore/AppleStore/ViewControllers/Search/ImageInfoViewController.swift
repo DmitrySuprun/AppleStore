@@ -13,10 +13,10 @@ final class ImageInfoViewController: UIViewController {
     enum Constants {
         static let emptyText = ""
         static let currencyChar = "$"
-        static let systemImageCheckmark = "checkmark.circle.fill"
-        static let systemImageHeart = "heart"
-        static let systemImageSquare = "square.and.arrow.up"
-        static let systemImageShippingBox = "shippingbox"
+        static let checkmarkSystemImageName = "checkmark.circle.fill"
+        static let heartSystemImageName = "heart"
+        static let squareSystemImageName = "square.and.arrow.up"
+        static let shippingBoxSystemImageName = "shippingbox"
         static let compatibilityLabelText = "Compatible with MacBook Pro - Evgeny"
         static let addToBagButtonTitle = "Add to Bag"
         static let orderLabelText = """
@@ -70,23 +70,23 @@ final class ImageInfoViewController: UIViewController {
         return scrollView
     }()
     
-    private lazy var checkMarkImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: Constants.systemImageCheckmark))
+    private var checkMarkImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: Constants.checkmarkSystemImageName))
         imageView.frame = CGRect(x: 60, y: 615, width: 20, height: 20)
         imageView.tintColor = .systemGreen
         return imageView
     }()
     
-    private lazy var boxImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: Constants.systemImageShippingBox))
+    private var boxImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: Constants.shippingBoxSystemImageName))
         imageView.frame = CGRect(x: 20, y: 750, width: 20, height: 20)
         imageView.tintColor = .systemGray
         return imageView
     }()
     
-    private lazy var barButtonItems = {
-        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.systemImageHeart))
-        let barButtonItem2 = UIBarButtonItem(image: UIImage(systemName: Constants.systemImageSquare))
+    private var barButtonItems = {
+        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: Constants.heartSystemImageName))
+        let barButtonItem2 = UIBarButtonItem(image: UIImage(systemName: Constants.squareSystemImageName))
         return [barButtonItem, barButtonItem2]
     }()
     
@@ -175,7 +175,7 @@ final class ImageInfoViewController: UIViewController {
     
     private func addViewToScrollView() {
         var xCoordinate = 0
-        for item in products[currentProductIndex].imagesName {
+        for item in products[currentProductIndex].imagesNames {
             let imageView = makeImageView(image: item)
             imageView.frame = CGRect(x: xCoordinate, y: 0, width: 393, height: 180)
             productImagesScrollView.addSubview(imageView)
