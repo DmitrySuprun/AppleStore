@@ -12,6 +12,7 @@ final class SessionsViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
     }
     
     // MARK: - Private Methods
