@@ -24,6 +24,8 @@ final class OnboardingPageViewController: UIPageViewController {
         static let skipButtonTitle = "SKIP"
         static let nextButtonTitle = "NEXT"
         static let getStartedButtonTitle = "GET STARTED"
+        static let isFirstStartKey = "isFirstStart"
+        static let fatalErrorText = "init(coder:) has not been implemented"
     }
     
     // MARK: - Private Visual Components
@@ -69,7 +71,7 @@ final class OnboardingPageViewController: UIPageViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Constants.fatalErrorText)
     }
     
     // MARK: - LifeCycle
@@ -77,6 +79,12 @@ final class OnboardingPageViewController: UIPageViewController {
         super.viewDidLoad()
         setupUI()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkFirstStart()
+    }
+    
     // MARK: - Objc Private Methods
     @objc private func skipActon() {
         let nextViewController = StoreTabBarViewController()
@@ -85,18 +93,11 @@ final class OnboardingPageViewController: UIPageViewController {
     }
     
     @objc private func nextAction() {
-        guard let current = viewControllers?.first else { return }
-        guard let nextVc = dataSource?.pageViewController(self, viewControllerAfter: current) else { return }
-        setViewControllers([nextVc], direction: .forward, animated: true)
-        
-        for subview in self.view.subviews where subview is UIPageControl {
-            subview.isHidden = true
-            getStarted.isHidden = false
-            nextButton.isHidden = true
-            skipButton.isHidden = true
-        }
-       
-        
+        guard let currentViewController = viewControllers?.first else { return }
+        guard
+            let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController)
+        else { return }
+        setViewControllers([nextViewController], direction: .forward, animated: true)
     }
     
     // MARK: - Private Methods
@@ -107,9 +108,9 @@ final class OnboardingPageViewController: UIPageViewController {
             setViewControllers([rootViewController],
                                direction: .forward,
                                animated: true)
-            delegate = self
             dataSource = self
         }
+        
         let proxy = UIPageControl.appearance()
         proxy.pageIndicatorTintColor = .systemGray
         proxy.currentPageIndicatorTintColor = .systemBlue
@@ -120,10 +121,25 @@ final class OnboardingPageViewController: UIPageViewController {
         view.addSubview(nextButton)
         view.addSubview(getStarted)
     }
-}
-
-// MARK: - UIPageViewControllerDelegate
-extension OnboardingPageViewController: UIPageViewControllerDelegate {
+    
+    private func checkIndex() {
+        for subview in self.view.subviews where subview is UIPageControl {
+            subview.isHidden = true
+            getStarted.isHidden = false
+            nextButton.isHidden = true
+            skipButton.isHidden = true
+        }
+    }
+    
+    private func checkFirstStart() {
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: Constants.isFirstStartKey) == false {
+            let nextViewController = StoreTabBarViewController()
+            nextViewController.modalPresentationStyle = .fullScreen
+            present(nextViewController, animated: true)
+        }
+        userDefaults.set(false, forKey: Constants.isFirstStartKey)
+    }
 }
 
 // MARK: - UIPageViewControllerDataSource
@@ -132,7 +148,14 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource {
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewController = viewController as? OnboardingItemViewController else { return nil }
         if let index = pagesViewControllers.firstIndex(of: viewController) {
+            print(index)
             if index > 0 {
+                for subview in self.view.subviews where subview is UIPageControl {
+                    subview.isHidden = false
+                    getStarted.isHidden = true
+                    nextButton.isHidden = false
+                    skipButton.isHidden = false
+                }
                 return pagesViewControllers[index - 1]
             }
         }
@@ -143,13 +166,22 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource {
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let viewController = viewController as? OnboardingItemViewController else { return nil }
         if let index = pagesViewControllers.firstIndex(of: viewController) {
+            print(index)
+            if index == pagesViewControllers.count - 1 {
+                for subview in self.view.subviews where subview is UIPageControl {
+                    subview.isHidden = true
+                    getStarted.isHidden = false
+                    nextButton.isHidden = true
+                    skipButton.isHidden = true
+                }
+            }
             if index < pagesViewControllers.count - 1 {
                 return pagesViewControllers[index + 1]
             }
         }
         return nil
     }
-    
+        
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         pagesViewControllers.count
     }
