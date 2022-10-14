@@ -8,7 +8,7 @@
 import UIKit
 
 /// Current page for OnboardingPageViewController
-class OnboardingItemViewController: UIViewController {
+final class OnboardingItemViewController: UIViewController {
     // MARK: - Private Properties
     private let imageName: String
     private let headerLabelText: String
@@ -64,10 +64,7 @@ class OnboardingItemViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIView.animate(withDuration: 1, delay: 0) {
-            self.greetingLabel.alpha = 1
-            self.headerLabel.alpha = 1
-        }
+        animationLabelAction()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -80,6 +77,13 @@ class OnboardingItemViewController: UIViewController {
     private func setupUI() {
         addViews()
         view.backgroundColor = .white
+    }
+    
+    private func animationLabelAction() {
+        UIView.animate(withDuration: 1, delay: 0) {
+            self.greetingLabel.alpha = 1
+            self.headerLabel.alpha = 1
+        }
     }
     
     private func addViews() {

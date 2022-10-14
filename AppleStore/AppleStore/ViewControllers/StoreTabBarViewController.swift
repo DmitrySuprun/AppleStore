@@ -21,6 +21,7 @@ final class StoreTabBarViewController: UITabBarController {
         static let personSystemImageName = "person.circle"
         static let glassSystemImageName = "magnifyingglass"
         static let bagSystemImageName = "bag"
+        static let isFirstStartKey = "isFirstStart"
     }
     
     // MARK: - LifeCycle
@@ -29,9 +30,23 @@ final class StoreTabBarViewController: UITabBarController {
         createTabsAction()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        checkFirstStart()
+    }
+    
     // MARK: - Private Properties
     private func setupUI() {
         view.backgroundColor = .systemBackground
+    }
+    
+    private func checkFirstStart() {
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: Constants.isFirstStartKey) == true {
+            let nextViewController = OnboardingPageViewController()
+            nextViewController.modalPresentationStyle = .fullScreen
+            present(nextViewController, animated: true)
+        }
+        userDefaults.set(false, forKey: Constants.isFirstStartKey)
     }
     
     private func createTabsAction() {

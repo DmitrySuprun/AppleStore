@@ -17,8 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-//        let rootViewController = StoreTabBarViewController()
-        let rootViewController = OnboardingPageViewController()
+        let rootViewController = StoreTabBarViewController()
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
     }
