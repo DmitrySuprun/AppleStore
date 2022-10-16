@@ -31,6 +31,7 @@ final class StoreTabBarViewController: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         checkFirstStart()
     }
     

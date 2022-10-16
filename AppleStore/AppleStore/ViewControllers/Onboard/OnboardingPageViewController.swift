@@ -82,10 +82,6 @@ final class OnboardingPageViewController: UIPageViewController {
         setupUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     // MARK: - Objc Private Methods
     @objc private func skipActon() {
         let nextViewController = StoreTabBarViewController()
