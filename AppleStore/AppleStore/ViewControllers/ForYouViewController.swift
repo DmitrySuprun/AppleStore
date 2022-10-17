@@ -31,6 +31,7 @@ final class ForYouViewController: UIViewController {
     }
     
     // MARK: - Private Properties
+    private var currentUserInterfaceStyle: UIUserInterfaceStyle = .light
     private lazy var avatarImageView = makeAvatarImageView()
     private lazy var productsScrollView = makeScrollView()
     private lazy var hereLabel = makeLabel(text: Constants.hereLabelText,
@@ -106,12 +107,13 @@ final class ForYouViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        currentUserInterfaceStyle = UIScreen.main.traitCollection.userInterfaceStyle
         switchUserInterfaceStyle(to: .light)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        switchUserInterfaceStyle(to: .dark)
+        switchUserInterfaceStyle(to: currentUserInterfaceStyle)
     }
     
     // MARK: - Objc Private Methods
